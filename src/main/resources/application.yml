@@ -1,0 +1,8 @@
+datagrid:
+  elasticsearch:
+    cluster-name: NRT
+    cluster-nodes: nrt-dev.dhl.com:9200,nrt-dev.dhl.com:9201
+    xpack: false
+    socketTimeout: ${ES_SOCKET_TIMEOUT:90000}
+    connectionTimeout: ${ES_CONNECTION_TIMEOUT:10000}
+    indexes: dci_shipments,shipments
