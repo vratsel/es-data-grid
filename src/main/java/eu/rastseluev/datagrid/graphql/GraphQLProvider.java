@@ -1,6 +1,6 @@
-package com.dhl.dci.datagrid.graphql;
+package eu.rastseluev.datagrid.graphql;
 
-import com.dhl.dci.datagrid.data.GeneratedSchema;
+import eu.rastseluev.datagrid.data.GeneratedSchema;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaGenerator;

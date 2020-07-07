@@ -1,4 +1,4 @@
-package com.dhl.dci.datagrid.data;
+package eu.rastseluev.datagrid.data;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.idl.RuntimeWiring;

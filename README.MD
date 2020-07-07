@@ -1,0 +1,2 @@
+This is an example of the dynamic graphQL API generation from the ElasticSearch schema.
+The SpringBoot application serves as a generator and API, is able to produce results from grapql requests to the generated schema. 

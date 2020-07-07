@@ -1,4 +1,4 @@
-package com.dhl.dci.datagrid.es;
+package eu.rastseluev.datagrid.es;
 
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
