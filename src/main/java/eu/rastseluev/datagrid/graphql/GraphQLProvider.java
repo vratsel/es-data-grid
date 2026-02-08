@@ -6,14 +6,13 @@ import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -34,7 +33,7 @@ public class GraphQLProvider {
     }
 
     @PostConstruct
-    public void init() throws IOException {
+    public void init() {
         schema.initIndexes(indexes);
         String sdlCreated = schema.toString();
         log.info("Generated SDL:\n" + sdlCreated);
