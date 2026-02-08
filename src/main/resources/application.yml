@@ -5,3 +5,10 @@ datagrid:
     socketTimeout: ${ES_SOCKET_TIMEOUT:90000}
     connectionTimeout: ${ES_CONNECTION_TIMEOUT:10000}
     indexes: ${INDEX_NAMES}
+  spring:
+    graphql:
+      graphiql:
+        enabled: true
+      path: /graphql
+server:
+  port: 8080

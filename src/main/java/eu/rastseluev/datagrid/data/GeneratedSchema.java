@@ -40,7 +40,9 @@ public class GeneratedSchema {
 
     private static final String ES_TYPE_DATE = "date";
     private static final String ES_TYPE_KEYWORD = "keyword";
+    private static final String ES_TYPE_TEXT = "text";
     private static final String ES_TYPE_INTEGER = "integer";
+    private static final String ES_TYPE_LONG = "long";
     private static final String ES_TYPE_SCALED_FLOAT = "scaled_float";
     private static final String ES_TYPE_BOOLEAN = "boolean";
 
@@ -123,11 +125,11 @@ public class GeneratedSchema {
                     inputs.append("\t").append(fieldName).append(": DateRange\n");
                     results.append("\t").append(fieldName).append(": String\n");
                 }
-                case ES_TYPE_KEYWORD -> {
+                case ES_TYPE_KEYWORD, ES_TYPE_TEXT -> {
                     inputs.append("\t").append(fieldName).append(": String\n");
                     results.append("\t").append(fieldName).append(": String\n");
                 }
-                case ES_TYPE_INTEGER -> {
+                case ES_TYPE_INTEGER, ES_TYPE_LONG -> {
                     inputs.append("\t").append(fieldName).append(": Int\n");
                     results.append("\t").append(fieldName).append(": Int\n");
                 }

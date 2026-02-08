@@ -1,16 +1,15 @@
 package eu.rastseluev.datagrid.graphql;
 
 import eu.rastseluev.datagrid.data.GeneratedSchema;
-import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.graphql.execution.GraphQlSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,8 +18,6 @@ import java.util.List;
 @Slf4j
 public class GraphQLProvider {
 
-    private GraphQL graphQL;
-
     @Autowired
     GeneratedSchema schema;
 
@@ -28,17 +25,16 @@ public class GraphQLProvider {
     private List<String> indexes;
 
     @Bean
-    public GraphQL graphQL() {
-        return graphQL;
-    }
-
-    @PostConstruct
-    public void init() {
+    public GraphQlSource graphQlSource() {
         schema.initIndexes(indexes);
+
         String sdlCreated = schema.toString();
-        log.info("Generated SDL:\n" + sdlCreated);
+        log.info("Generated SDL:\n{}", sdlCreated);
+
         GraphQLSchema graphQLSchema = buildSchema(sdlCreated);
-        this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
+
+        // Spring GraphQL will use this to serve POST {spring.graphql.path:/graphql}
+        return GraphQlSource.builder(graphQLSchema).build();
     }
 
     private GraphQLSchema buildSchema(String sdl) {
